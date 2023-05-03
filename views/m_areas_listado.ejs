@@ -1,0 +1,46 @@
+<html>
+
+<head> <title> Sistema de control de las areas </title>
+
+<body>
+
+    <H1> Mantenimiento de areas </H1>
+
+    <HR>
+
+    <P> <A HREF=/m_areas_nuevo>Nueva area</A> </P>
+
+    <TABLE BORDER=1>
+
+    <TR> <TH> ID </TH> 
+        <TH> NOMBRE </TH>
+        <TH> ESTADO </TH>
+        <TH>ABREVIATURA </TH>
+        <TH COLSPAN=2>ACCIONES </TH>
+    </TR>
+
+    <% records.forEach(function(area) { %>
+
+    <TR> 
+        
+        <TD> <%= area._id %> </TD>
+
+        <TD> <%= area.Nombre %> </TD>
+
+        <TD> <%= area.Estado %> </TD>
+
+        <TD> <%= area.Abreviatura %> </TD>
+
+        <TD> <A HREF=/m_areas_editar/<%= area._id %>> Editar</A> </TD>
+
+        <TD> <A HREF=/m_areas_eliminar/<%= area._id %>> Eliminar</A> </TD>
+
+    </TR>
+
+    <% }); %>
+
+</TABLE>
+
+</body>
+
+</html>

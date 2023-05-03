@@ -1,6 +1,6 @@
 var mongojs = require('mongojs');
 
-var uri ='mongodb://localhost:27017/MauricioEscalante_Lab02';
+var uri ='mongodb://localhost:27017/EduardoFloresLab02';
 
 var db = mongojs (uri, ["Cargos"]);
 
@@ -17,7 +17,7 @@ function cargos_listado (req, res) {
     }
 
     res.render('m_cargos_listado', {records: records});
-
+    console.log(records);
 });
 
 }
@@ -29,7 +29,7 @@ listado: function (req, res) {
 
 },
 nuevo:function (req,res){
-    res.reder('m_cargos_nuevo',{});
+    res.render('m_cargos_nuevo',{});
 },
 
 grabar_nuevo: function (req, res) {
@@ -72,7 +72,7 @@ editar: function (req, res) {
 },
 grabar_editar: function (req, res) {
 
-    var xid = req.body['xid' ]*1;
+    var xid = req.body['xid' ] * 1;
     
     var xnom = req.body['xnom'];
     
