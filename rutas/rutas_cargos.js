@@ -1,6 +1,6 @@
 var mongojs = require('mongojs');
 
-var uri ='mongodb://localhost:27017/EduardoFloresLab02';
+var uri ='mongodb://localhost:27017/MauricioEscalanteLab02';
 
 var db = mongojs (uri, ["Cargos"]);
 
@@ -64,7 +64,7 @@ editar: function (req, res) {
     res.end();
     return;
     } 
-    
+    console.log("hola mundio");
     res.render('m_cargos_editar', {cargo: records[0]});
     
     });
@@ -72,15 +72,21 @@ editar: function (req, res) {
 },
 grabar_editar: function (req, res) {
 
-    var xid = req.body['xid' ] * 1;
+    var xid=req.params.xid*1; 
     
-    var xnom = req.body['xnom'];
+    var xnom = req.body.xnom;
     
-    var xsue = req.body['xsue'];
+    var xsue = req.body.xsue;
     
-    db.Cargos.update( {_id:xid}, {nombre: xnom, sueldo: xsue}, function() {
-        cargos_listado (req, res);
-    });
+    console.log("hola mundio");
+    db.Cargos.update({_id:xid}, {$set: {nombre: xnom, sueldo: xsue,}}, function(err, doc) {
+        if (err) {
+            console.log('Error al acceder a la base de datos.'); 
+            res.end();
+            return;
+        } 
+    res.redirect('/m_cargos_listado');
+    })
 },
 eliminar: function (req, res) { 
     var xid=req.params.xid*1; 
